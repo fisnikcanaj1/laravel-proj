@@ -7,8 +7,9 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 ## Technologies used:
  * Language: **PHP**
  * PHP version: **7.2.2**
- * Local Development Environment: **XAMPP**
  * Framework: **Laravel**
+ * Local Development Environment: **XAMPP**
+ * Package Manager: **Composer**
  * Database: **MySQL**
  * Service API: **REST**
 
@@ -19,9 +20,9 @@ These instructions will get you a copy of the project up and running on you loca
 ### Prerequisites
  #### Required
   * Development and Server Solution Software: **XAMPP** or **WAMP** etc
-  * Databese: **MySQL**
+  * Database: **MySQL**
   * Package Manager: **Composer**
-  * Git
+  * Source Control: **Git**
 
 ## Installing and Running Application
 Please follow carefully step by step instructions below in order to get the app up and running locally.
@@ -47,20 +48,24 @@ Please follow carefully step by step instructions below in order to get the app 
         DB_HOST=127.0.0.1
         DB_PORT=3306
         DB_DATABASE=products
-        DB_USERNAME=root
-        DB_PASSWORD=password
+        DB_USERNAME=<yourusername>
+        DB_PASSWORD=<yourpassword>
     ```
     **Note: Make sure the MySQL server is running, database is created, and config of DB in .env is done.**
 4. Migrate database to MySQL:
     ```
      php artisan migrate
     ```
-5. Run the application:
+5. To generate application key run the command below:
+   ```
+    php artisan key:generate
+   ```
+6. Run the application:
     ```
      php artisan serve
     ```
  ## API Documentation
- **Localhost base URL: http://localhost**
+ **Base URL: http://localhost:8000**
 
   **Note: In order to test API RESTful Endpoints you need to use an HTTP Client Tool, Postman is recommended**
 
@@ -113,7 +118,7 @@ Returns JSON list of products
 
      ```json
      {
-        "id": 5,
+        "id": 2,
         "name": "iPhone 8",
         "descrpition": "Apple iPhone 8 Plus smartphone. Announced Sep 2017.",
         "price": 939,
@@ -142,7 +147,7 @@ Create new Product from JSON structure with values sent in body of request
             "name": "iPhone charger",
             "descrpition": "Apple 12W USB Power Adapter.",
             "price": 2,
-            "quantity": 100,
+            "quantity": 100
         }
     ```
 * **Success Response:**
@@ -157,9 +162,48 @@ Create new Product from JSON structure with values sent in body of request
             "quantity": 100,
             "updated_at": "2018-03-17 13:40:52",
             "created_at": "2018-03-17 13:40:52",
-            "id": 9
+            "id": 1
         }
         ```
+
+### Update Product
+
+Updates existing Product from JSON structure with values sent in body of request
+
+* **URL**
+
+    /api/products/:id
+
+* **Method:**
+
+    `PUT`
+
+* **Body Data (application/json)**
+
+    ```json
+        {
+            "name": "iPhone charger updated ",
+            "descrpition": "Apple 12W USB Power Adapter updated.",
+            "price": 700,
+            "quantity": 3
+        }
+    ```
+* **Success Response:**
+
+    **Content:**
+
+        ```json
+        {
+            "name": "iPhone charger updated",
+            "descrpition": "Apple 12W USB Power Adapter updated.",
+            "price": 700,
+            "quantity": 3,
+            "updated_at": "2018-03-17 13:50:52",
+            "created_at": "2018-03-17 13:40:52",
+            "id": 1
+        }
+        ```
+
 ### Delete Product
 Deletes Product by its ID and returns a message if deleted successfully
 
