@@ -1,73 +1,84 @@
-
-
 # Laravel RESTful Application
 
-A Restful API Application built on Laravel Framework. When running this application a command line runner will be excetuted in order to populate the MySQL database with entries from a JSON file. The resource of RESTful API is **Products**, which will response JSON structure data based on endpoints.
+A Restful API Application built on Laravel Framework. The resource of RESTful API is **Products**, which will response JSON structure data based on endpoints.
 
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
 
 ## Technologies used:
-    * Language: **PHP**
-    * PHP version: **7.2.2** 
-    * Development Environment: **xampp**
-    * Framework: **Laravel**
-    * Build Automation Tool: **Apache Ant**
-    * Database: **MySQL**
-    * Service API: **REST**
-    * REST Testing Library: **REST Assured**
-    * Code editor: **Visual Studio Code**
+ * Language: **PHP**
+ * PHP version: **7.2.2**
+ * Local Development Environment: **XAMPP**
+ * Framework: **Laravel**
+ * Database: **MySQL**
+ * Service API: **REST**
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on you local machine for development and testing purposes.
 
 ## Local Installation
 ### Prerequisites
-    #### Required
-     * Development Environment: **xampp**, **wamp** etc
-     * Databese: **MySQL**
-     * Git
-    
-    #### Optional
-     * Apache Ant
-     * Laravel Composer
-
-**Note: If you want to use command line to run application and tests you need to install softwares mentioned in Optional above**
+ #### Required
+  * Development and Server Solution Software: **XAMPP** or **WAMP** etc
+  * Databese: **MySQL**
+  * Package Manager: **Composer**
+  * Git
 
 ## Installing and Running Application
 Please follow carefully step by step instructions below in order to get the app up and running locally.
 
 1. Open Terminal
-
 2. Get a clone of this project in local machine:
     ```
-     git init 
      git clone https://github.com/fisnikcanaj1/laravel-proj.git
      cd laravel-proj
     ```
-    * Migrate database to MySQL:
-     ```
+3. Install dependencies:
+    ```
+    composer install
+    ```
+3. Create database in MySQL with name **products**.
+4. Create a clone of **.env.example** file with name **.env**:
+    ```
+    cp .env.example .env
+    ```
+5. Open **.env** file and configure your MySQL information:
+    ```
+        DB_CONNECTION=mysql
+        DB_HOST=127.0.0.1
+        DB_PORT=3306
+        DB_DATABASE=products
+        DB_USERNAME=root
+        DB_PASSWORD=password
+    ```
+    **Note: Make sure the MySQL server is running, database is created, and config of DB in .env is done.**
+4. Migrate database to MySQL:
+    ```
      php artisan migrate
     ```
- ## API Documentation 
+5. Run the application:
+    ```
+     php artisan serve
+    ```
+ ## API Documentation
  **Localhost base URL: http://localhost**
 
   **Note: In order to test API RESTful Endpoints you need to use an HTTP Client Tool, Postman is recommended**
 
-   ### Show Products
-    Returns json list of products
+### Show Products
+Returns JSON list of products
 
-    * **URL**
+* **URL**
 
-        /api/products/
+    /api/products/
 
-    * **Method:**
+* **Method:**
 
-        `Get`
+    `Get`
 
-    * **Success Response:**
-    
-      **Content:** 
-      
+ * **Success Response:**
+
+      **Content:**
+
       ```json
       [{
          "id": 3,
@@ -80,26 +91,26 @@ Please follow carefully step by step instructions below in order to get the app 
        }, {...}]
        ```
 
-   ### Show Product
-   Returns json of a specific Product data based on its id
-    * **URL**
- 
-     /api/products/:id
-   
-    *  **URL Params**
+### Show Product
+   Returns JSON of a specific Product data based on its id
+* **URL**
+
+    /api/products/:id
+
+*  **URL Params**
 
     **Required:**
- 
+
      `id=[integer]`
 
-    * **Method:**
-    
+* **Method:**
+
      `GET`
-  
-   * **Success Response:**
-    
-     **Content:** 
-      
+
+* **Success Response:**
+
+     **Content:**
+
      ```json
      {
         "id": 5,
@@ -112,19 +123,19 @@ Please follow carefully step by step instructions below in order to get the app 
      }
      ```
 
-    ### Create Product
+### Create Product
 
-    Create new Product from json structure with values sent in body of request
+Create new Product from JSON structure with values sent in body of request
 
-    * **URL**
+* **URL**
 
     /api/products/
 
-    * **Method:**
+* **Method:**
 
     `POST`
 
-    * **Body Data (application/json)**
+* **Body Data (application/json)**
 
     ```json
         {
@@ -134,10 +145,10 @@ Please follow carefully step by step instructions below in order to get the app 
             "quantity": 100,
         }
     ```
-    * **Success Response:**
+* **Success Response:**
 
-        **Content:** 
-        
+    **Content:**
+
         ```json
         {
             "name": "iPhone charger",
@@ -149,26 +160,26 @@ Please follow carefully step by step instructions below in order to get the app 
             "id": 9
         }
         ```
-  ### Delete Product
-    Deletes Product by its ID and returns a message if deleted successfully
- 
+### Delete Product
+Deletes Product by its ID and returns a message if deleted successfully
+
 * **URL**
- 
+
    /api/product/:id
-    
+
 * **Method:**
-    
+
    `DELETE`
-   
+
 * **URL Params**
 
-  **Required:**
- 
-  `id=[integer]`
-    
+    **Required:**
+
+    `id=[integer]`
+
 * **Success Response:**
 
-     **Content:** 
+    **Content:**
 
      ```json
         {
