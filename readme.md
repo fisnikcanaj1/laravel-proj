@@ -157,7 +157,7 @@ Please follow carefully step by step instructions below in order to get the app 
  
 * **URL**
  
-   /api/people/:id
+   /api/product/:id
     
 * **Method:**
     
