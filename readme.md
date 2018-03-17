@@ -2,8 +2,7 @@
 
 # Laravel RESTful Application
 
-A Restful API Application built on Laravel Framework. When running this application a command line runner will be excetuted in order to populate the in-memory SQL database with entries from a JSON file. The resource of RESTful API is **Products**, which will response JSON structure data based on endpoints.
-
+A Restful API Application built on Laravel Framework. When running this application a command line runner will be excetuted in order to populate the MySQL database with entries from a JSON file. The resource of RESTful API is **Products**, which will response JSON structure data based on endpoints.
 
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
 
