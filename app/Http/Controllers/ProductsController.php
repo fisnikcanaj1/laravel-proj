@@ -38,7 +38,10 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'text' => 'required'
+            'name' => 'required',
+            'descrpition' => 'required',
+            'price' => 'required',
+            'quantity' => 'required'
         ]);
 
         if($validator->fails()) {
@@ -48,10 +51,10 @@ class ProductsController extends Controller
 
             // Create product
             $product = new Product;
-            $product->text = $request->input('product_name');
-            $product->text = $request->input('product_descrpition');
-            $product->integer = $request->input('product_price');
-            $product->integer = $request->input('product_quantity');
+            $product->name = $request->input('name');
+            $product->descrpition = $request->input('descrpition');
+            $product->price = $request->input('price');
+            $product->quantity = $request->input('quantity');
             $product->save();
 
             return response()->json($product);
@@ -90,7 +93,29 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'descrpition' => 'required',
+            'price' => 'required',
+            'quantity' => 'required'
+        ]);
+
+        if($validator->fails()) {
+            $response = array('response' => $validator->messages(), 'success' => false);
+            return $response;
+        } else {
+
+            // Find an product
+            $product = Product::find($id);
+            $product->name = $request->input('name');
+            $product->descrpition = $request->input('descrpition');
+            $product->price = $request->input('price');
+            $product->quantity = $request->input('quantity');
+            $product->save();
+
+            return response()->json($product);
+        }
+
     }
 
     /**
@@ -101,6 +126,10 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+
+        $response = array('response' => 'Product is deleted', 'success' => true);
+        return $response;
     }
 }
