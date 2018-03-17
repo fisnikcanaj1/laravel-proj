@@ -17,7 +17,6 @@ class ProductsController extends Controller
     {
         $products = Product::all();
         return response()->json($products);
-
     }
 
     /**
@@ -131,7 +130,7 @@ class ProductsController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        $response = array('response' => 'Product is deleted', 'success' => true);
+        $response = array('response' => 'Product successfully deleted', 'success' => true);
         return $response;
     }
 }
