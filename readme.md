@@ -61,13 +61,11 @@ Please follow carefully step by step instructions below in order to get the app 
 
         /api/products/
 
-    * **Methid:**
+    * **Method:**
 
         `Get`
 
     * **Success Response:**
-
-    * **Code**: 200
     
       **Content:** 
       
@@ -179,6 +177,5 @@ Please follow carefully step by step instructions below in order to get the app 
             "success": true
         }
       ```
-
 ## Author
   * **Fisnik Canaj**
