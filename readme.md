@@ -165,7 +165,7 @@ Deletes Product by its ID and returns a message if deleted successfully
 
 * **URL**
 
-   /api/product/:id
+   /api/products/:id
 
 * **Method:**
 
