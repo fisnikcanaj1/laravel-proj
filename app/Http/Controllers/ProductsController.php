@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
-use \Validator;
+use Validator;
 
 class ProductsController extends Controller
 {
@@ -17,6 +17,7 @@ class ProductsController extends Controller
     {
         $products = Product::all();
         return response()->json($products);
+
     }
 
     /**
@@ -48,7 +49,6 @@ class ProductsController extends Controller
             $response = array('response' => $validator->messages(), 'success' => false);
             return $response;
         } else {
-
             // Create product
             $product = new Product;
             $product->name = $request->input('name');
@@ -57,9 +57,11 @@ class ProductsController extends Controller
             $product->quantity = $request->input('quantity');
             $product->save();
 
-            return response()->json($product);
+        return response()->json($product);
+
         }
-    }
+
+            }
 
     /**
      * Display the specified resource.
